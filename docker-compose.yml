@@ -13,15 +13,15 @@ services:
     links:
       - db:mysql
     volumes:
-      - /home/hector/docker/infotect/modules:/var/www/html/modules
-      - /home/hector/docker/infotect/override:/var/www/html/override
-      - /home/hector/docker/infotect/themes:/var/www/html/themes
+      - /home/ec2-user/infotect/modules:/var/www/html/modules
+      - /home/ec2-user/infotect/override:/var/www/html/override
+      - /home/ec2-user/infotect/themes:/var/www/html/themes
     ports:
-      - "8080:80"
+      - "80:80"
 
   db:
     image: mysql
     volumes:
-     - /home/hector/docker/infotect/base:/var/lib/mysql
+     - /home/ec2-user/infotect/base:/var/lib/mysql
     environment:
      MYSQL_ROOT_PASSWORD: admin
