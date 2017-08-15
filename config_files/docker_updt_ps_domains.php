@@ -24,19 +24,14 @@
  *  @license   http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  *  International Registered Trademark & Property of PrestaShop SA
  */
-
-// Workaround for redirection on init x
+// Workaround for redirection on init
 $_POST['id_shop'] = 1;
-
 require_once 'config/config.inc.php';
-
 if (!defined('_PS_VERSION_'))
 	exit;
-
 // First, we get the URL used to reach this page.
 $domain = Tools::getHttpHost();
 $old_domain = Configuration::get('PS_SHOP_DOMAIN');
-
 if (version_compare(_PS_VERSION_, '1.5', '>=') && $domain != $old_domain && !Shop::isFeatureActive())
 {
 	$url = ShopUrl::getShopUrls(Configuration::get('PS_SHOP_DEFAULT'))->where('main', '=', 1)->getFirst();
@@ -45,13 +40,12 @@ if (version_compare(_PS_VERSION_, '1.5', '>=') && $domain != $old_domain && !Sho
 		$url->domain = $domain;
 		$url->domain_ssl = $domain;
 		$url->save();
-
 		// Then, we update the configuration table
 		Configuration::updateValue('PS_SHOP_DOMAIN', $domain);
 		Configuration::updateValue('PS_SHOP_DOMAIN_SSL', $domain);
 	}
 }
-
 //unlink(__FILE__);
 Tools::redirect("index.php");
 die();
+Contact GitHub API Training Shop Blog About

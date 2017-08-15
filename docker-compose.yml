@@ -9,7 +9,7 @@ services:
     depends_on:
       - db
     environment:
-      - PS_DEV_MODE=1
+      - PS_DEV_MODE=0
     links:
       - db:mysql
     volumes:
