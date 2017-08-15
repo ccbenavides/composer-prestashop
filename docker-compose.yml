@@ -1,0 +1,27 @@
+version: "2"
+
+services:
+  web:
+    build:
+      dockerfile: Dockerfile
+      context: ./
+    image: docker2017_web_2
+    depends_on:
+      - db
+    environment:
+      - PS_DEV_MODE=1
+    links:
+      - db:mysql
+    volumes:
+      - /home/hector/docker/infotect/modules:/var/www/html/modules
+      - /home/hector/docker/infotect/override:/var/www/html/override
+      - /home/hector/docker/infotect/themes:/var/www/html/themes
+    ports:
+      - "8080:80"
+
+  db:
+    image: mysql
+    volumes:
+     - /home/hector/docker/infotect/base:/var/lib/mysql
+    environment:
+     MYSQL_ROOT_PASSWORD: admin

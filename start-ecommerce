@@ -1,0 +1,3 @@
+#!/bin/bash
+docker start docker2017_web_1
+docker start docker2017_db_1 
