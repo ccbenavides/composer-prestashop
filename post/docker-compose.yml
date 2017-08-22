@@ -1,0 +1,25 @@
+version: "2"
+
+services:
+  web:
+    image: testweb
+    depends_on:
+      - db
+    links:
+      - db:mysql
+    volumes:
+      - /home/vimcemt/pr_infotec/mejora/modules:/var/www/html/modules
+      - /home/vimcemt/pr_infotec/mejora/override:/var/www/html/override
+      - /home/vimcemt/pr_infotec/mejora/themes:/var/www/html/themes
+      - /home/vimcemt/pr_infotec/mejora/exportaciones:/var/www/html/1617
+    ports:
+      - "8888:80"
+
+  db:
+    image: testdb
+    volumes:
+     - /home/vimcemt/pr_infotec/mejora/base:/var/lib/mysql
+    environment:
+     MYSQL_ROOT_PASSWORD: admin
+    ports:
+     - "5555:3306"
