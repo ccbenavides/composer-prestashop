@@ -8,18 +8,20 @@ services:
     links:
       - db:mysql
     volumes:
-      - /home/vimcemt/pr_infotec/mejora/modules:/var/www/html/modules
-      - /home/vimcemt/pr_infotec/mejora/override:/var/www/html/override
-      - /home/vimcemt/pr_infotec/mejora/themes:/var/www/html/themes
-      - /home/vimcemt/pr_infotec/mejora/exportaciones:/var/www/html/1617
+      - /home/ec2-user/infotect/modules:/var/www/html/modules
+      - /home/ec2-user/infotect/override:/var/www/html/override
+      - /home/ec2-user/infotect/themes:/var/www/html/themes
+      - /home/ec2-user/infotect/1617:/var/www/html/1617
+      - /home/ec2-user/infotect/img:/var/www/html/img
     ports:
-      - "8888:80"
+      - "80:80"
+    environment:
+      - PS_HANDLE_DYNAMIC_DOMAIN=1
+      - PS_DOMAIN=54.236.206.140
 
   db:
     image: testdb
     volumes:
-     - /home/vimcemt/pr_infotec/mejora/base:/var/lib/mysql
+     - /home/ec2-user/infotect/base:/var/lib/mysql
     environment:
-     MYSQL_ROOT_PASSWORD: admin
-    ports:
-     - "5555:3306"
+     - MYSQL_ROOT_PASSWORD=Tamara2021@

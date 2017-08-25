@@ -5,7 +5,6 @@ services:
     build:
       dockerfile: Dockerfile
       context: ./
-    image: docker2017_web_2
     depends_on:
       - db
     environment:
@@ -13,9 +12,11 @@ services:
     links:
       - db:mysql
     volumes:
+      - /home/ec2-user/infotect/1617:/var/www/html/1617
       - /home/ec2-user/infotect/modules:/var/www/html/modules
       - /home/ec2-user/infotect/override:/var/www/html/override
       - /home/ec2-user/infotect/themes:/var/www/html/themes
+      - /home/ec2-user/infotect/img:/var/www/html/img
     ports:
       - "80:80"
 
@@ -24,4 +25,4 @@ services:
     volumes:
      - /home/ec2-user/infotect/base:/var/lib/mysql
     environment:
-     MYSQL_ROOT_PASSWORD: admin
+     MYSQL_ROOT_PASSWORD: Tamara2021@
